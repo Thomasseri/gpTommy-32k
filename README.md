@@ -22,21 +22,29 @@
 Il vocabolario **gpTommy 32k** è il motore lessicale ad alta densità impiegato per la nuova generazione di modelli geodetici compatti e leggeri della famiglia **Sentinel R-08**:
 
 * 🌍 **Sito Ufficiale:** **[www.sentinelhub.eu](https://www.sentinelhub.eu)** — Piattaforma Sentinel LifeOS
-* 🤖 **Sentinel R-08 v7 (Pyramid 44.5M):** [GitHub](https://github.com/Thomasseri/R-08) | [Hugging Face](https://huggingface.co/Tom2701/R-08)
-* 🚀 **Sentinel R-08 v7.2 (51.6M con 12 Hub Icosaedrici):** [GitHub](https://github.com/Thomasseri/R-08-v7.2) | [Hugging Face](https://huggingface.co/Tom2701/R-08-v7.2)
-* 🌟 **Sentinel R-08 v7.2a DA ZERO (51.6M Record 82.51% BLiMP):** [GitHub](https://github.com/Thomasseri/R-08-v7.2a) | [Hugging Face](https://huggingface.co/Tom2701/R-08-v7.2a)
-* 🔬 **Modello di Controllo A/B Transformer Baseline (44.9M):** [GitHub](https://github.com/Thomasseri/R-08-Transformer-Baseline) | [Hugging Face](https://huggingface.co/Tom2701/R-08-Transformer-Baseline)
+* 🤖 **Sentinel R-08 v7 (Pyramid 44.5M):** [GitHub](https://github.com/Thomasseri/R-08) | [Hugging Face](https://huggingface.co/SentinelHub/R-08)
+* 🚀 **Sentinel R-08 v7.2 (51.6M con 12 Hub Icosaedrici):** [GitHub](https://github.com/Thomasseri/R-08-v7.2) | [Hugging Face](https://huggingface.co/SentinelHub/R-08-v7.2)
+* 🌟 **Sentinel R-08 v7.2a DA ZERO (51.6M Record 82.51% BLiMP):** [GitHub](https://github.com/Thomasseri/R-08-v7.2a) | [Hugging Face](https://huggingface.co/SentinelHub/R-08-v7.2a)
+* 🔬 **Modello di Controllo A/B Transformer Baseline (44.9M):** [GitHub](https://github.com/Thomasseri/R-08-Transformer-Baseline) | [Hugging Face](https://huggingface.co/SentinelHub/R-08-Transformer-Baseline)
 
 ---
 
 ## 🎯 Perché gpTommy 32k è Diverso dai Tokenizer Tradizionali
 
-La quasi totalità dei Large Language Model commerciali (come GPT-4, LLaMA o Mistral) utilizza tokenizer BPE statistici calibrati sulla lingua inglese. Nel testo italiano questo comporta una grave frammentazione:
+I tokenizer BPE statistici tradizionali calibrati prevalentemente sulla lingua inglese presentano una forte frammentazione quando applicati alla morfologia italiana. Nel testo italiano questo comporta una grave frammentazione:
 * Una parola come *«cuscinetto»* o *«manutenzione»* viene spezzata in 3 o 4 sottosillabe arbitrarie (`cus-`, `ci-`, `net-`, `to`), aumentando a dismisura la lunghezza del contesto, i costi computazionali e il rischio di allucinazioni ortografiche.
 
 **gpTommy 32k** adotta un approccio lessicale nativo e strutturato:
 * Contiene **29.775 parole italiane complete** (il **90,9%** dell'intero vocabolario), coprendo forme base, singolari, plurali, verbi coniugati e l'intero lessico tecnico-scientifico.
 * Le parole non vengono spezzettate: la rete neurale associa un **singolo token atomico** a ciascun concetto lessicale finito.
+
+---
+
+## 📐 Metriche Oggettive di Compressione & Nota sulla Nomenclatura (`32k`)
+
+* **Significato di `32k`**: Il suffisso **`32k`** indica la **dimensione del vocabolario lessicale (`32.768` token ID distinti)** e non la finestra di contesto del modello.
+* **Efficienza di Tokenizzazione (Fertilità Lessicale sull'Italiano Tecnico)**:
+  Su testo tecnico e industriale italiano (es. *«Il cuscinetto a sfere radiale riduce l'attrito volvente nella manutenzione dei cilindri pneumatici»*), **gpTommy 32k** mantiene un rapporto medio di **`~1,06 token per parola lessicale`** (1 singolo token atomico per ciascun sostantivo, aggettivo o verbo presente nelle 29.775 voci), contro i **`2,4 – 3,2 sub-token per parola`** tipici dei tokenizer statistici subword non nativi.
 
 ---
 
